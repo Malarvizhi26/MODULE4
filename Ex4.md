@@ -1,48 +1,62 @@
-# Ex.No:4
-# Ex.Name: Write a CPP program to demonstrate the this pointer.
-## Date:
-## Aim:
-To write a C++ program that demonstrates the use of the this pointer.
+# Ex.No:4  
+# Ex.Name: Write a C++ program to override the print() function in the base class with the print() function in the child class using the concept of virtual functions.  
 
-## Algorithm:
-1. Start the program.
-2. Define a class Student with private members name and marks.
-3. Use a constructor where the this pointer is used to differentiate between class members and parameters with the same name.
-4. Define a method display() to print the student details using the this pointer.
-5. In main(), create objects of Student and display their details.
-6. End the program.
+## Date:  
 
+## Aim:  
+To write a C++ program that demonstrates **function overriding** using **virtual functions**, where the base class defines a virtual `print()` function that is overridden in the derived class.  
 
-## Program:
-```
-#include <iostream>
+## Algorithm:  
+1. Start the program.  
+2. Define a base class containing a virtual function `print()`.  
+3. Define a derived class that overrides the `print()` function.  
+4. Create a base class pointer and point it to an object of the derived class.  
+5. Call the `print()` function using the base class pointer.  
+6. Due to the virtual keyword, the derived class version of the function will be invoked.  
+7. Display the overridden output.  
+8. Stop the program.  
+
+## Program:  
+```cpp
+#include<iostream>
 using namespace std;
-class Test {
-    int x;
-public:
-    void setX(int x) {
-        this->x = x; 
-    }
-    void display() {
-        cout << "x = " << x << endl;
+ 
+class base {
+    public:
+    virtual void print(string s)=0;
+};
+ 
+class derived : public base
+{
+    public:
+    void print(string s)
+    {
+        cout<<s<<endl;
     }
 };
-int main() {
-    Test obj;
-    int value;
-    cin >> value;
-    obj.setX(value);
-    obj.display();
+ 
+int main()
+{
+    string s;
+    cin>>s;
+    base *bptr;
+    derived d;
+    bptr = &d;
+    bptr->print(s);
+ 
+   
     return 0;
 }
 ```
 
-
-
 ## Output:
-<img width="350" height="212" alt="image" src="https://github.com/user-attachments/assets/86e16412-3838-4f67-8e08-d756c1361de3" />
-
-
+<img width="882" height="332" alt="image" src="https://github.com/user-attachments/assets/fe50c87f-9653-48f2-9bb8-79dd7f310fbc" />
 
 ## Result:
-The program successfully demonstrates the this pointer by using it to distinguish class members from constructor parameters and by accessing object data inside member functions.
+```
+Input:
+1
+
+Output:
+VirtualOne
+```
