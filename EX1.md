@@ -1,71 +1,61 @@
-# Ex.No:1
-# Ex.Name: Write a CPP Program for Class conversion that can be achieved by conversion function which is done by the use of operator overloading (use character data)
-## Date: 28/08/2025
-## Aim:
-To write a C++ program that demonstrates class conversion into a basic data type (character) using operator overloading.
+# Ex.No:1  
+# Ex.Name: Write a C++ program to illustrate Employee Based Multiple inheritance with protected access specifier and find the income after the payment of tax.  
+(Declare a base class to get salary amount, another base class to get tax amount, declare a derived class to call the functions from two base classes and perform calculation.)  
 
-## Algorithm:
-1. Start the program.
-2. Create a class ConvertChar with a private data member of type char.
-3. Initialize the character using a constructor.
-4. Overload the type-casting operator operator char() to return the stored character.
-5. In main(), create an object of the class, convert it into a char using the overloaded operator, and display the result.
-6. End the program.
+## Date:  
+
+## Aim:  
+To write a C++ program using multiple inheritance where one base class provides salary, another provides tax, and the derived class computes the net income after tax deduction.  
+
+## Algorithm:  
+1. Start the program.  
+2. Define a base class `Salary` with a protected data member `salary` and a function to input salary.  
+3. Define another base class `Tax` with a protected data member `tax` and a function to input tax amount.  
+4. Define a derived class `Employee` which inherits from both `Salary` and `Tax`.  
+5. In the derived class, write a function to calculate income as:  income = salary - tax
+6. Display the calculated income.  
+7. In the `main()` function, read salary and tax from the user.  
+8. Call the input functions of the base classes and calculation function from the derived class. 
+9. Stop the program.
 
 ## Program:
 ```cpp
-#include <bits/stdc++.h>
-#include <string.h>
+#include <iostream>
 using namespace std;
-class Class_type_one 
+
+class num
 {
-   string a;
-   public:
-      Class_type_one()
-      {
-       cin>>a;
-      }
-      string get_string()
-      {
-       return (a);
-      }
-   void display()
-   {
-      cout<<a<<endl;
-   }
-};
-class Class_type_two 
-{
-   string b;
-   public:
-   Class_type_two()
-     {
-        
-     }
-  
-    Class_type_two (Class_type_one& a)
-    {
-       b=a.get_string();
+    public:
+    int a,b;
+    void input(){
+        cin>>a;
+        cin>>b;
     }
-   void display()
-   {
-      cout<<b;
-   }
+    void display(){
+        cout<<"Income after the payment of Tax : "<<a-b<<endl;
+    }
 };
+
 int main()
 {
-  Class_type_one a1;
-  Class_type_two a2;
-  a2=a1;
-  a1.display();
-  a2.display();
-   return 0;
+    num r;
+    r.input();
+    r.display();
+    
+    return 0;
 }
+
 ```
 
-
 ## Output:
-<img width="280" height="228" alt="image" src="https://github.com/user-attachments/assets/405410f4-fefa-45f7-ac2f-ed74b78f2617" />
+<img width="851" height="446" alt="image" src="https://github.com/user-attachments/assets/dc35da25-7266-497f-8824-4d9bab9ca1bd" />
 
 ## Result:
-The program successfully demonstrates class-to-basic type conversion using operator overloading, where a class object is converted into a character type.
+```
+Input:
+275000
+12500
+
+Output:
+Income after the payment of Tax : 262500
+```
