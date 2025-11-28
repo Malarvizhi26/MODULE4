@@ -1,66 +1,73 @@
-# Ex.No:3
-# Ex.Name: Write a CPP program to demonstrate on the object composition (use string data) 
-## Date:
-## Aim:
-To write a C++ program to demonstrate object composition where one class is used inside another class, making use of string data.
+# Ex.No:3  
+# Ex.Name: Write a C++ program for Class conversion that can be achieved by conversion function which is done by the use of operator overloading (use Integer data).  
 
-## Algorithm:
-1. Start the program.
-2. Define a class Person with a string member name.
-3. Create a constructor to initialize the name.
-4. Provide a display function.
-5. Define another class Employee that contains a Person object as a data member (composition).
-6. Initialize the Person object inside Employee using the member initializer list.
-7. Add employee-specific details (like designation).
-8. Provide a display function to show details.
-9. In main(), create an object of Employee and display the details.
-10. End the program.
+## Date:  
 
+## Aim:  
+To write a C++ program to demonstrate class-to-class type conversion using a conversion function achieved through operator overloading.  
 
-## Program:
-```
-#include <iostream>
+## Algorithm:  
+1. Start the program.  
+2. Define a source class with an integer data member and method to read value.  
+3. Define a destination class with an integer data member and a constructor that accepts an object of the source class.  
+4. In the source class, overload the type conversion operator to return the integer value.  
+5. In the destination class constructor, assign the source object’s value to its own member.  
+6. In `main()`, input integer value into source object.  
+7. Convert the source object to destination object implicitly/explicitly.  
+8. Display the values of objects after conversion.  
+9. Stop the program.  
+
+## Program:  
+```cpp
+#include <bits/stdc++.h>
+#include <string.h>
 using namespace std;
-class A 
+class Class_type_one 
 {
-    public:
-    string x;
-	A(){
-	    x="";
-	}
-	A(string a){
-	    cout<<"Constructor A(string a) is invoked"<<endl;
-	    x=a;
-	}
+   float a=0;
+   public:
+   float get()
+   {
+     cin>>a;
+     return a;
+   }
+   void display()
+   {
+       cout<<a<<endl;
+   }
 };
-class B 
+class Class_type_two 
 {
-    string b;
-    A objA;
-    public:
-    B(string a) : objA(a){
-        b=a;
-    }
-    void display(){
-        cout << "Data in object of class B = " << b<< endl; 
-        cout << "Data in member object of class A in class B = " << objA.x; 
-    }
+   float b=0;
+   public:
+   void operator=(Class_type_one a)
+   {
+       b=a.get();
+       a.display();
+   }
+   void display()
+   {
+      cout<<b;
+   }
 };
 int main()
 {
-    string a;
-    cin>>a;
-	B objb(a);
-	objb.display();
-	return 0;
+    Class_type_one a;
+    Class_type_two b;
+    b = a;
+    b.display();
+    return 0;
 }
 ```
-
-
 ## Output:
-<img width="817" height="259" alt="image" src="https://github.com/user-attachments/assets/14755615-4432-4ab3-9983-fc84da4d9ec2" />
-
-
+<img width="872" height="357" alt="image" src="https://github.com/user-attachments/assets/3fc85ebe-7a0c-4f8b-b7d6-1e607ca4737c" />
 
 ## Result:
-The program successfully demonstrates object composition by including a Person object inside the Employee class and initializing it using the member initializer list.
+```
+Input:
+10
+
+Output:
+10
+10
+```
